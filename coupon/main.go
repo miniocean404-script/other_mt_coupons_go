@@ -12,7 +12,6 @@ func main() {
 	utils.StartServer()
 
 	secTime := utils.GetSecTime()
-	go utils.GetCouponInfo(secTime)
 	go fetchCoupon(secTime)
 
 	for {}
