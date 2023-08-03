@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"fetch-coupon/task"
+	"fetch-coupon/src/task"
 	"fmt"
 	"io"
 	"net/http"

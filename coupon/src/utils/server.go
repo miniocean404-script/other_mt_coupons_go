@@ -14,9 +14,9 @@ func StartServer() {
 		{
 			var out bytes.Buffer
 			cmd := exec.Command("node", "../sign/index.js")
-			cmd.Stdout = &out
-			cmd.Stderr = os.Stderr
-			cmd.Run()
+			cmd.Stdout = &out  // 把执行命令的标准输出定向到out
+			cmd.Stderr = os.Stderr // 把命令的错误输出定向到 os
+		     cmd.Start()
 		}
 	}
 }

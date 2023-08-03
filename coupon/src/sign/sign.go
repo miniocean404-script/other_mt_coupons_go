@@ -3,8 +3,8 @@ package sign
 import (
 	"bytes"
 	"encoding/json"
-	"fetch-coupon/task"
-	"fetch-coupon/utils"
+	"fetch-coupon/src/task"
+	"fetch-coupon/src/utils"
 	"fmt"
 	"io"
 	"net/http"

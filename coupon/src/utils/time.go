@@ -2,7 +2,7 @@ package utils
 
 import (
 	"encoding/json"
-	"fetch-coupon/task"
+	"fetch-coupon/src/task"
 	"fmt"
 	"io"
 	"net/http"

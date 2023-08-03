@@ -1,15 +1,16 @@
 package main
 
 import (
-	"fetch-coupon/sign"
-	"fetch-coupon/task"
-	"fetch-coupon/utils"
+	"fetch-coupon/src/sign"
+	"fetch-coupon/src/task"
+	"fetch-coupon/src/utils"
 	"fmt"
 	"time"
 )
 
 func main() {
 	go utils.StartServer()
+
 
 	secTime := utils.GetSecTime()
 	if secTime == nil {

@@ -1,0 +1,56 @@
+# https://github.com/cosmtrek/air/blob/master/air_example.toml
+root = "."
+tmp_dir = "tmp"
+
+[build]
+    # 简单的shell命令。你也可以用make windows 需要加上.exe
+    cmd = "go build -o ./tmp/main ."
+    # 运行二进制 (bin/full_bin) 时添加额外的参数。
+    # cmd = "go build -o ./tmp/main ./main.go" 如果想传递参数，那就执行打包后的文件时传递参数 例：./tmp/main -f xx
+    # 打包生产的二进制文件在哪里运行，并且可以传递参数
+    bin = "tmp/main"
+    # 运行二进制 (bin/full_bin) 时添加额外的参数。
+    # args_bin = ["-f", "apps/app/web/etc/web-api.yaml"]
+    args_bin = [""]
+    # 自定义执行程序的命令，可以添加额外的编译标识例如添加 GIN_MODE=release
+    # Windows平台示例：full_bin = "tmp\main.exe"
+    # full_bin = "tmp/bff/bff"
+    # 观察文件的扩展名
+    include_ext = ["go", "tpl", "tmpl", "html"]
+    # 忽略的文件名及目录.
+    exclude_dir = ["assets", "tmp", "vendor", "frontend/node_modules"]
+    # 指定检视的目录
+    include_dir = ["src"]
+    # 排除的文件
+    exclude_file = []
+    # 排除特定的正则表达式
+    exclude_regex = ["_test\\.go"]
+    # 排除未更改的文件
+    exclude_unchanged = true
+    # 按照目录的符号链接
+    follow_symlink = true
+    # 日志文件放在tmp_dir中
+    log = "air.log"
+    # 构建延迟时间
+    delay = 1000 # ms
+    # 当生成错误发生时，停止运行旧的二进制文件
+    stop_on_error = true
+    # 在杀死进程之前发送中断信号(windows不支持此功能)
+    send_interrupt = false
+    # 发送中断信号后的延迟
+    kill_delay = 500 # ms
+
+[log]
+    # 展示日志时间
+    time = true
+
+[color]
+    # 自定义每个部分的颜色。如果没有发现颜色，使用原始应用程序日志。
+    main = "magenta"
+    watcher = "cyan"
+    build = "yellow"
+    runner = "green"
+
+[misc]
+    # 退出时删除tmp目录
+    clean_on_exit = true
