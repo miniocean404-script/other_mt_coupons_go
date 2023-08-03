@@ -24,7 +24,7 @@ func GetSecTime() *SecTimeData {
 	today := time.Now().Format("2006-01-02")
 	t, err := time.ParseInLocation("2006-01-02 15:04:05", fmt.Sprintf("%s %s", today, task.SecAt), time.Local)
 	if err != nil {
-		return nil
+		fmt.Printf("%v",err)
 	}
 
 	return &SecTimeData{

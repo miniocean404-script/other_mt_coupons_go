@@ -21,7 +21,6 @@ func StartServer() {
 
 		    cmd.Start() // start 异步执行 run 同步阻塞
 
-
 			for {
 				server_result := out.String()
 				if server_result!="" {
