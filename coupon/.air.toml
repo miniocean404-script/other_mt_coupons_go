@@ -20,7 +20,7 @@ tmp_dir = "tmp"
     # 忽略的文件名及目录.
     exclude_dir = ["assets", "tmp", "vendor", "frontend/node_modules"]
     # 指定检视的目录
-    include_dir = ["src"]
+    include_dir = ["src","./"]
     # 排除的文件
     exclude_file = []
     # 排除特定的正则表达式

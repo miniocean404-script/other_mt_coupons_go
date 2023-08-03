@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fetch-coupon/src/task"
 	"fetch-coupon/src/utils"
+	wgCommon "fetch-coupon/src/wg"
 	"fmt"
 	"io"
 	"net/http"
@@ -16,24 +17,6 @@ import (
 var(
 	wg sync.WaitGroup
 )
-
-// const (
-// 	Num            = 5
-// 	Early          = 100 // 毫秒
-// 	SecAt          = "10:30:00"
-// 	Id             = "00B223429B424F7A910C0D4885957E99"
-// 	GdId           = "379397"
-// 	PageId         = "378931"
-// 	InstanceId     = "16618616100670.97030510386642830"
-// 	SignUrl        = "http://127.0.0.1:9588/api/sign"
-// 	CouponInfoUrl  = "https://promotion.waimai.meituan.com/lottery/limitcouponcomponent/info"
-// 	FetchCouponUrl = "https://promotion.waimai.meituan.com/lottery/limitcouponcomponent/fetchcoupon"
-
-// 	// 经纬度
-// 	ActualLng = "117.23344"
-// 	ActualLat = "31.82658"
-// )
-
 
 type (
 	SignData struct {
@@ -146,17 +129,22 @@ func fetchCouponUrl() string {
 }
 
 
+func Test(){
+	println("1111")
+}
 
 func Fc(sd SignData) {
 	wg.Add(task.Num)
 	sdSignLen := len(sd.Sign)
 	for i := 0; i < task.Num; i++ {
+		println(i,sdSignLen)
 		if i >= sdSignLen {
 			return
 		}
 		go sd.fcReq(i)
 	}
 	wg.Wait()
+	wgCommon.MainWg.Done()
 }
 
 func (sd *SignData) fcReq(i int) {
@@ -167,7 +155,7 @@ func (sd *SignData) fcReq(i int) {
 	payload, _ := json.Marshal(s.Data.Data)
 	httpReq, err := http.NewRequest(http.MethodPost, sd.Url, bytes.NewReader(payload))
 	if err != nil {
-		fmt.Println("err", err)
+		fmt.Println("fcReq err", err)
 		return
 	}
 
@@ -181,6 +169,7 @@ func (sd *SignData) fcReq(i int) {
 	}
 
 	defer response.Body.Close()
+
 	data, err := io.ReadAll(response.Body)
 	if err != nil {
 		return
