@@ -9,8 +9,7 @@ import (
 )
 
 func main() {
-	go utils.StartServer()
-
+	utils.StartServer()
 
 	secTime := utils.GetSecTime()
 	if secTime == nil {

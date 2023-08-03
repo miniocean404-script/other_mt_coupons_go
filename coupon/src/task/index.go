@@ -8,7 +8,7 @@ const (
 	GdId           = "379397"
 	PageId         = "378931"
 	InstanceId     = "16618616100670.97030510386642830"
-	SignUrl        = "http://127.0.0.1:9588/api/sign"
+	SignUrl        = "http://127.0.0.1:9588/api/sign" // lsof -i :9588 查看进程占用端口
 	CouponInfoUrl  = "https://promotion.waimai.meituan.com/lottery/limitcouponcomponent/info"
 	FetchCouponUrl = "https://promotion.waimai.meituan.com/lottery/limitcouponcomponent/fetchcoupon"
 

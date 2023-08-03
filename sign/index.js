@@ -27,7 +27,7 @@ app.post('/api/sign',(req,res)=>{
 })
 
 app.listen(9588,()=>{
-    console.log('服务器启动成功');
+    console.log('node 服务器启动成功');
 })
 
 
