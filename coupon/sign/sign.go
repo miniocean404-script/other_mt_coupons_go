@@ -1,9 +1,10 @@
-package utils
+package sign
 
 import (
 	"bytes"
 	"encoding/json"
 	"fetch-coupon/task"
+	"fetch-coupon/utils"
 	"fmt"
 	"io"
 	"net/http"
@@ -68,7 +69,7 @@ type (
 
 
 
-func SignDuration(secTime *SecTimeData) []SignData {
+func SignDuration(secTime *utils.SecTimeData) []SignData {
 	d := secTime.Sec.Sub(secTime.Mt) - 30*time.Second
 	fmt.Println("在", d, "后获取签名")
 	t := time.NewTimer(d)
@@ -170,7 +171,7 @@ func (sd *SignData) fcReq(i int) {
 		return
 	}
 
-	httpReq.Header = BaseHeader(sd.Cookie, s.Data.Mtgsig)
+	httpReq.Header = utils.BaseHeader(sd.Cookie, s.Data.Mtgsig)
 	client := &http.Client{}
 
 	response, err := client.Do(httpReq)

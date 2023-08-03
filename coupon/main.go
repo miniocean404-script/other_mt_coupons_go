@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fetch-coupon/sign"
 	"fetch-coupon/task"
 	"fetch-coupon/utils"
 	"fmt"
@@ -22,10 +23,10 @@ func main() {
 }
 
 func fetchCoupon(secTime *utils.SecTimeData) {
-	var data []utils.SignData
+	var data []sign.SignData
 
 	go func() {
-		data = utils.SignDuration(secTime)
+		data = sign.SignDuration(secTime)
 	}()
 
 	d := secTime.Sec.Sub(secTime.Mt) - task.Early*time.Millisecond
@@ -40,7 +41,7 @@ func fetchCoupon(secTime *utils.SecTimeData) {
 	}
 
 	for _, sd := range data {
-		go utils.Fc(sd)
+		go sign.Fc(sd)
 	}
 }
 
